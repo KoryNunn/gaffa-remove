@@ -4,13 +4,10 @@ var Gaffa = require('gaffa'),
 function Remove(){}
 Remove = Gaffa.createSpec(Remove, Gaffa.Action);
 Remove.prototype.type = actionType;
-Remove.prototype.trigger = function(){
+Remove.prototype.trigger = function(action, scope, event){
 
-    this.gaffa.model.remove(this.target.binding, this, this.cleans.value ? false : null);
+    this.gaffa.model.remove(this.target.binding, this, this.cleans.value ? false : null, scope);
 };
 Remove.prototype.target = new Gaffa.Property();
-Remove.prototype.cleans = new Gaffa.Property();
-
-
 
 module.exports = Remove;
